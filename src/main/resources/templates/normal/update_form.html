@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>
+			user-dashboard
+		</title>
+	</head>
+	<body>
+		<section>
+			
+			<div class="card mr-5 ml-3">
+							<div class="card-body">
+								<h1>Update Contact</h1>
+								<div class="container-fluid mt-1">
+									<div class="row">
+										<div class="col-md-10 offset-md-1">
+											
+											<form action="#" th:object="${contact}"
+											enctype="multipart/form-data"
+											method="POST" th:action="@{/user/process-update}"
+											class="mt-2">
+											
+											<input type="hidden" th:value="${contact.cID}" name="cID"/>
+												
+											<!--First Name-->
+											<div class="input-group">
+												<div class="input-group-prepend">
+													<div class="input-group-text">
+														<i class="fa fa-user-alt">
+															
+														</i>
+													</div>
+												</div>
+												<input th:value="${contact.FirstName}" type="text" id="firstName" name="FirstName" placeholder="First Name" class="form-control" required>
+											</div>
+											
+											<!--Second Name-->
+											<div class="input-group mt-2">
+												<div class="input-group-prepend">
+													<div class="input-group-text">
+														<i class="fas fa-user-alt"></i>
+													</div>
+										        </div>
+											    <input type="text" id="secondName" name="LastName" placeholder="Last Name" class="form-control">
+											</div>
+												
+											<!--Phone-->
+											<div class="input-group mt-2">
+											    <div class="input-group-prepend">
+													<div class="input-group-text">
+														<i class="fa fa-phone"></i>
+													</div>
+												</div>
+												<input th:value="${contact.phone}" min="11" type="text" id="phone" name="phone" placeholder="Phone" class="form-control" required>
+											</div>
+																											
+											<!--Email-->
+											<div class="input-group mt-2">
+												<div class="input-group-prepend">
+													<div class="input-group-text">
+														@
+													</div>
+												</div>
+												<input th:value="${contact.email}" type="email" id="email" name="email" placeholder="Email" class="form-control">
+											</div>								
+											
+											
+											<!--Work-->
+											<div class="input-group mt-2">
+												<div class="input-group-prepend">
+													<div class="input-group-text">
+														<i class="fa fa-briefcase"></i>
+															</div>
+														</div>
+														<input type="text" id="work" name="work" placeholder="Work" class="form-control">
+													</div>	
+													
+											<!--Description-->
+											<div class="form-group mt-2">
+												<textarea placeholder="Enter Contact Decription" name="description" id="description" class="form-control" rows="5"></textarea>
+											</div>		
+																
+											<!--Image-->
+											<div class="containder">
+												<img style="width:100px; height:100px;" class="image-fluid profile_picture" src="" th:src="@{'/img/'+${contact.image}}" alt=""/>
+											</div>
+											<p class="text-secondary">Choose a new picture</p>
+											<div class="custom-file">
+												<input type="file" name="profileImage" />
+											</div>										
+											
+											
+											<!--Button-->
+											<div class="container text-center">
+												<button class="btn btn-outline-primary">Update Contact</button>
+											</div>															
+									</form>
+																			
+											
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+		    
+		</section>
+	</body>
+</html>
