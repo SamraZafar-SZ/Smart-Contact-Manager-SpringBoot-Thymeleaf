@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>
+			Contact Detail
+		</title>
+	</head>
+	<body>
+		<section>
+			<div class="card ml-3 mr-3 text-center">
+				<div class="card-body" th:if=${contact}>
+					<div class="container">
+						
+						<img src="" style="height:150px; width:150px;" class="profile_picture" th:src="@{'/img/'+${contact.image}}" />
+						<h3 class="mt-3"><span th:text="${contact.FirstName}"><span th:text="${contact.SecondName}"></span></h3>
+						
+						<table class="table">
+						  <thead>
+						    <tr>
+						      <th scope="col">#ID</th>
+						      <th scope="col"><span th:text="${contact.cID}"></th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <th scope="row">Email</th>
+						      <td><span th:text="${contact.email}"></td>
+						      
+						    </tr>
+						    
+							<tr>
+							<th scope="row">Phone</th>
+							<td><span th:text="${contact.phone}"></td>
+													      
+							</tr>
+							
+							<tr>
+							<th scope="row">Work</th>
+							<td><span th:text="${contact.work}"></td>
+													      
+							</tr>
+										
+							<tr>
+							<th scope="row">Description</th>
+							<td><span th:text="${contact.description}"></td>
+													      
+							</tr>
+											
+						  </tbody>
+						</table>
+						
+						<a href="#" th:onclick="|deleteContact(${contact.cID})|" class="btn btn-danger btn-sm">Delete</a>
+						<form method="post" th:action="@{'/user/update-contact/'+${contact.cID}}" class="mt-1">
+														<button type="submit" class="btn btn-secondary btn-sm">Update</button>
+													</form>
+						
+					</div>
+				</div>
+				<h1 th:unless="${contact}">Unauthorized Access Denied</h1>
+			</div>
+		    
+		</section>
+	</body>
+</html>
